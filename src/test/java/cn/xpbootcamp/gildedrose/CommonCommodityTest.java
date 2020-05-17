@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class CommodityTest {
+class CommonCommodityTest {
     @Test
     public void should_return_sellIn_9_quality_19_when_normal_product_pass_1_day_given_sellIn_10_quality_20() {
         Commodity normalCommodity = new CommonCommodity(10, 20);
