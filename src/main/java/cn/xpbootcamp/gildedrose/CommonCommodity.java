@@ -1,16 +1,20 @@
 package cn.xpbootcamp.gildedrose;
 
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Data
-@Builder
-public class Commodity {
-    private int sellIn;
-    private int quality;
+@EqualsAndHashCode(callSuper = true)
+class CommonCommodity extends Commodity{
+    public CommonCommodity(int sellIn, int quality) {
+        super(sellIn, quality);
+    }
 
-    public boolean validQuality() {
-        return quality <= 50 && quality > 0;
+    public void oneDayPassed() {
+        sellIn--;
+        if (sellIn > 0)
+            quality--;
+        else
+            quality-=2;
+        quality=Math.max(0, quality);
     }
 }
