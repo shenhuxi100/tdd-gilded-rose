@@ -21,4 +21,12 @@ class CommodityTest {
         assertEquals(commonCommodity.getSellIn(), 0);
         assertEquals(commonCommodity.getQuality(), 0);
     }
+
+    @Test
+    public void should_return_sellIn_2_quality_5_when_normal_product_pass_1_day_given_sellIn_3_quality_6(){
+        Commodity normalCommodity = new CommonCommodity(3,6);
+        normalCommodity.oneDayPassed();
+        assertEquals(normalCommodity.getSellIn(), 2);
+        assertEquals(normalCommodity.getQuality(), 5);
+    }
 }
