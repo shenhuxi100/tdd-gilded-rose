@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CommodityTest {
     @Test
-    public void should_return_sellIn_9_quality_19_when_normal_product_pass_1_day_given_sellIn_10_quality_20(){
+    public void should_return_sellIn_9_quality_19_when_normal_product_pass_1_day_given_sellIn_10_quality_20() {
         Commodity normalCommodity = new CommonCommodity(10, 20);
         normalCommodity.oneDayPassed();
         assertEquals(normalCommodity.getSellIn(), 9);
@@ -15,18 +15,27 @@ class CommodityTest {
     }
 
     @Test
-    public void should_return_sellIn_0_quality_0_when_normal_product_pass_1_day_given_sellIn_1_quality_0(){
-        Commodity commonCommodity = new CommonCommodity(1,0);
+    public void should_return_sellIn_0_quality_0_when_normal_product_pass_1_day_given_sellIn_1_quality_0() {
+        Commodity commonCommodity = new CommonCommodity(1, 0);
         commonCommodity.oneDayPassed();
         assertEquals(commonCommodity.getSellIn(), 0);
         assertEquals(commonCommodity.getQuality(), 0);
     }
 
     @Test
-    public void should_return_sellIn_2_quality_5_when_normal_product_pass_1_day_given_sellIn_3_quality_6(){
-        Commodity normalCommodity = new CommonCommodity(3,6);
+    public void should_return_sellIn_2_quality_5_when_normal_product_pass_1_day_given_sellIn_3_quality_6() {
+        Commodity normalCommodity = new CommonCommodity(3, 6);
         normalCommodity.oneDayPassed();
         assertEquals(normalCommodity.getSellIn(), 2);
         assertEquals(normalCommodity.getQuality(), 5);
     }
+
+    @Test
+    public void should_return_sellIn_2_quality_50_when_normal_product_pass_1_day_given_sellIn_3_quality_51() {
+        Commodity normalGoods = new CommonCommodity(3, 51);
+        normalGoods.oneDayPassed();
+        assertEquals(normalGoods.getSellIn(), 2);
+        assertEquals(normalGoods.getQuality(), 50);
+    }
+
 }
