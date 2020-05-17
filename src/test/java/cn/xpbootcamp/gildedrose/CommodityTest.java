@@ -2,6 +2,8 @@ package cn.xpbootcamp.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -21,4 +23,12 @@ class CommodityTest {
         Commodity commodity = Commodity.builder().quality(5).build();
         assertTrue(commodity.validQuality());
     }
+
+    @Test
+    void should_return_expire_day_given_a_expire_commodity() {
+        Commodity commodity = Commodity.builder().createDay(LocalDate.of(2019, 5, 10)).sellIn(365).build();
+        assertTrue(LocalDate.now().isAfter(commodity.getExpireDay()));
+    }
+
+
 }
