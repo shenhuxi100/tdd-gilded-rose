@@ -1,6 +1,5 @@
 package cn.xpbootcamp.gildedrose;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +11,14 @@ class CommodityTest {
         Commodity normalCommodity = new CommonCommodity(10, 20);
         normalCommodity.oneDayPassed();
         assertEquals(normalCommodity.getSellIn(), 9);
-        Assert.assertEquals(normalCommodity.getQuality(), 19);
+        assertEquals(normalCommodity.getQuality(), 19);
     }
 
+    @Test
+    public void should_return_sellIn_0_quality_0_when_normal_product_pass_1_day_given_sellIn_1_quality_0(){
+        Commodity commonCommodity = new CommonCommodity(1,0);
+        commonCommodity.oneDayPassed();
+        assertEquals(commonCommodity.getSellIn(), 0);
+        assertEquals(commonCommodity.getQuality(), 0);
+    }
 }
