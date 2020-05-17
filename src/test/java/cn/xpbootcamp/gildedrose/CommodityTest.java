@@ -32,10 +32,25 @@ class CommodityTest {
 
     @Test
     public void should_return_sellIn_2_quality_50_when_normal_product_pass_1_day_given_sellIn_3_quality_51() {
-        Commodity normalGoods = new CommonCommodity(3, 51);
-        normalGoods.oneDayPassed();
-        assertEquals(normalGoods.getSellIn(), 2);
-        assertEquals(normalGoods.getQuality(), 50);
+        Commodity commonCommodity = new CommonCommodity(3, 51);
+        commonCommodity.oneDayPassed();
+        assertEquals(commonCommodity.getSellIn(), 2);
+        assertEquals(commonCommodity.getQuality(), 50);
     }
 
+    @Test
+    public void should_return_sellIn_n1_quality_4_when_normal_product_pass_1_day_given_sellIn_0_quality_6(){
+        Commodity commonCommodity = new CommonCommodity(0,6);
+        commonCommodity.oneDayPassed();
+        assertEquals(commonCommodity.getSellIn(), -1);
+        assertEquals(commonCommodity.getQuality(), 4);
+    }
+
+    @Test
+    public void should_return_sellIn_n2_quality_4_when_normal_product_pass_1_day_given_sellIn_n1_quality_6(){
+        Commodity commonCommodity = new CommonCommodity(-1,6);
+        commonCommodity.oneDayPassed();
+        assertEquals(commonCommodity.getSellIn(), -2);
+        assertEquals(commonCommodity.getQuality(), 4);
+    }
 }
